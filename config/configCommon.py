@@ -13,7 +13,8 @@ rushRefreshTimeIntval = 100
 # 最早运行时间
 maxRunTime = 6
 # 程序停止时间
-maxRunStopTime = 23
+maxRunStopHour = 23
+maxRunStopMinite = 30
 # 可售天数
 maxDate = 29
 
