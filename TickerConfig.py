@@ -1,4 +1,3 @@
-# coding=utf-8
 # 关于软件使用配置说明，一定要看！！！
 # ps: 如果是候补车票，需要通过人证一致性核验的用户及激活的“铁路畅行”会员可以提交候补需求，请您按照操作说明在铁路12306app.上完成人证核验
 # 关于候补了之后是否还能继续捡漏的问题在此说明： 软件为全自动候补加捡漏，如果软件候补成功则会停止抢票，发出邮件通知，但是不会影响你继续捡漏，
@@ -113,7 +112,7 @@ ORDER_MODEL = 1
 IS_PROXY = 0
 
 # 预售放票时间, 如果是捡漏模式，可以忽略此操作
-OPEN_TIME = "09:00:00"
+OPEN_TIME = "13:00:00"
 # 1=使用selenium获取devicesID
 # 2=使用网页端/otn/HttpZF/logdevice获取devicesId，这个接口的算法目前可能有点问题，如果登录一直302的请改为配置1
 # 3=自己打开浏览器在headers-Cookies中抓取RAIL_DEVICEID和RAIL_EXPIRATION，这个就不用配置selenium
@@ -121,6 +120,9 @@ COOKIE_TYPE = 1
 # 如果COOKIE_TYPE=1，则需配置chromeDriver路径,下载地址http://chromedriver.storage.googleapis.com/index.html
 # chromedriver配置版本只要和chrome的大版本匹配就行
 CHROME_PATH = r"D:\96NEKO_PROJECTS\Python\12306\chromedriver.exe"
+
+#为了docker37 准备的环境变量，windows环境可以不用管这个参数
+CHROME_CHROME_PATH = "/opt/google/chrome/google-chrome";
 
 # 如果COOKIE_TYPE=3, 则需配置RAIL_EXPIRATION、RAIL_DEVICEID的值
 RAIL_EXPIRATION = ""
