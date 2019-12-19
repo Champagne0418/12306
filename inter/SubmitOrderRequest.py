@@ -2,10 +2,10 @@
 import datetime
 import urllib
 from collections import OrderedDict
+
 import TickerConfig
 from config.urlConf import urls
 from inter.CheckOrderInfo import checkOrderInfo
-from inter.ConfirmHB import confirmHB
 from inter.PassengerInitApi import passengerInitApi
 from myException.ticketIsExitsException import ticketIsExitsException
 

@@ -12,6 +12,7 @@ class getPassengerDTOs:
     获取乘客信息
     :return:
     """
+
     def __init__(self, session, ticket_peoples=None, set_type=None, is_more_ticket_num=None):
         """
         :param session: 登录实例
@@ -26,7 +27,8 @@ class getPassengerDTOs:
         self.set_type = set_type
 
     def sendGetPassengerDTOs(self):
-        getPassengerDTOsResult = self.session.httpClint.send(self.session.urls["get_passengerDTOs"], json.dumps({"_json_att": ""}))
+        getPassengerDTOsResult = self.session.httpClint.send(self.session.urls["get_passengerDTOs"],
+                                                             json.dumps({"_json_att": ""}))
         if getPassengerDTOsResult.get("data", False) and getPassengerDTOsResult["data"].get("normal_passengers", False):
             normal_passengers = getPassengerDTOsResult['data']['normal_passengers']
             _normal_passenger = [normal_passengers[i] for i in range(len(normal_passengers)) if
@@ -38,9 +40,9 @@ class getPassengerDTOs:
             elif getPassengerDTOsResult.get('messages', False):
                 print(getPassengerDTOsResult.get('messages', False))
             else:
-                print(u"警告：您的账号可能买票有问题，获取不到联系人，请测试是否能正常下单，在捡漏或者购票！！！")
-                print(u"警告：您的账号可能买票有问题，获取不到联系人，请测试是否能正常下单，在捡漏或者购票！！！")
-                print(u"警告：您的账号可能买票有问题，获取不到联系人，请测试是否能正常下单，在捡漏或者购票！！！")
+                print(u"警告：您的账号可能买票有问题，获取不到联系人，请测试是否能正常下单，再捡漏或者购票！！！")
+                print(u"警告：您的账号可能买票有问题，获取不到联系人，请测试是否能正常下单，再捡漏或者购票！！！")
+                print(u"警告：您的账号可能买票有问题，获取不到联系人，请测试是否能正常下单，再捡漏或者购票！！！")
                 # raise PassengerUserException(ticket.DTO_NOT_FOUND)
 
     def getPassengerTicketStr(self, set_type):
@@ -96,14 +98,16 @@ class getPassengerDTOs:
                     user_info[0]['passenger_name'] + "," + user_info[0]['passenger_id_type_code'] + "," +
                     user_info[0]['passenger_id_no'] + "," + user_info[0]['passenger_type'] + '_')
             else:
-                for i in range(self.is_more_ticket_num):
-                    passengerTicketStrList.append(
-                        '0,' + user_info[i]['passenger_type'] + "," + user_info[i][
-                            "passenger_name"] + "," + user_info[i]['passenger_id_type_code'] + "," + user_info[i][
-                            'passenger_id_no'] + "," + user_info[i]['mobile_no'] + ',N,' + user_info[i]["allEncStr"] + '_' + set_type)
-                    oldPassengerStr.append(
-                        user_info[i]['passenger_name'] + "," + user_info[i]['passenger_id_type_code'] + "," +
-                        user_info[i]['passenger_id_no'] + "," + user_info[i]['passenger_type'] + '_')
+                for i in range(len(user_info)): # 由于一人可能有多个购票证件（如护照），这里user_info筛选出来的未必和乘车人数一致
+                    if user_info[i]['passenger_id_type_code'] != 'B':   # 排除掉同一个人有护照信息的情况
+                        passengerTicketStrList.append(
+                            '0,' + user_info[i]['passenger_type'] + "," + user_info[i][
+                                "passenger_name"] + "," + user_info[i]['passenger_id_type_code'] + "," + user_info[i][
+                                'passenger_id_no'] + "," + user_info[i]['mobile_no'] + ',N,' + user_info[i][
+                                "allEncStr"] + '_' + set_type)
+                        oldPassengerStr.append(
+                            user_info[i]['passenger_name'] + "," + user_info[i]['passenger_id_type_code'] + "," +
+                            user_info[i]['passenger_id_no'] + "," + user_info[i]['passenger_type'] + '_')
         elif secretList:
             """
             候补订单有多少个联系人，就候补多少个联系人了，没有优先提交之说

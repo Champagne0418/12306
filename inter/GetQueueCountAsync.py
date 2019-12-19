@@ -1,6 +1,6 @@
 import TickerConfig
 
-[]# coding=utf-8
+# coding=utf-8
 import datetime
 import sys
 import time

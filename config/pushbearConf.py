@@ -17,7 +17,7 @@ def sendPushBear(msg):
             sendPushBearUrls = urls.get("Pushbear")
             data = {
                 "sendkey": TickerConfig.PUSHBEAR_CONF["send_key"].strip(),
-                "text": "易行购票成功通知",
+                "text": "购票成功通知",
                 "desp": msg
             }
             httpClint = HTTPClient(0)

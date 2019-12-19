@@ -59,7 +59,7 @@ class proxy:
                 f.write(write_proxy)
                 proxy_num += 1
             except Exception:
-                print ("代理链接超时，去除此IP：{0}".format(proxy))
+                print("代理链接超时，去除此IP：{0}".format(proxy))
                 continue
         print("总共可使用ip量为{}个".format(proxy_num))
 

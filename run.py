@@ -19,4 +19,4 @@ def PushServerChan():
 if __name__ == '__main__':
     run()
     # Email()
-    # PushbearConf()
+    # PushServerChan()

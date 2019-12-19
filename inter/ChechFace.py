@@ -1,11 +1,12 @@
 import datetime
-import urllib
 from collections import OrderedDict
-from config.urlConf import urls
+
+import wrapcache
+
 import TickerConfig
+from config.urlConf import urls
 from inter.GetSuccessRate import getSuccessRate
 from myException.ticketConfigException import ticketConfigException
-import wrapcache
 
 
 class chechFace:

@@ -8,7 +8,7 @@ PUSH_SERVER_CHAN_PATH = "https://sc.ftqq.com"
 
 def sendServerChan(msg):
     """
-    pushBear微信通知
+    Server酱微信通知
     :param str: 通知内容 content
     :return:
     """
@@ -21,7 +21,7 @@ def sendServerChan(msg):
             sendServerChanUrls = urls.get("ServerChan")
             sendServerChanUrls["req_url"] += f'{secret}.send'
 
-            params = {"text": "易行购票成功通知", "desp": msg}
+            params = {"text": "购票成功", "desp": msg}
             httpClint = HTTPClient(0)
             sendServerChanRsp = httpClint.send(sendServerChanUrls, params=params)
             if sendServerChanRsp.get("errno") == 0:

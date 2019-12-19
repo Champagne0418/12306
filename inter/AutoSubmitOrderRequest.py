@@ -13,6 +13,7 @@ class autoSubmitOrderRequest:
     """
     快读提交订单通道
     """
+
     def __init__(self, session,
                  secretStr,
                  train_date,
@@ -23,7 +24,7 @@ class autoSubmitOrderRequest:
                  train_no,
                  stationTrainCode,
                  leftTicket,
-                 set_type,):
+                 set_type, ):
         self.set_type = set_type
         try:
             self.secretStr = urllib.unquote(secretStr)
@@ -78,7 +79,7 @@ class autoSubmitOrderRequest:
         data = self.data_par()
         autoSubmitOrderRequestResult = self.session.httpClint.send(urls, data)
         if autoSubmitOrderRequestResult and \
-                autoSubmitOrderRequestResult.get("status", False) and\
+                autoSubmitOrderRequestResult.get("status", False) and \
                 autoSubmitOrderRequestResult.get("httpstatus", False) == 200:
             requestResultData = autoSubmitOrderRequestResult.get("data", {})
             if requestResultData:
@@ -111,7 +112,7 @@ class autoSubmitOrderRequest:
                             data['randCode'] = randCode
                             break
                         else:
-                            print (u"验证码有误, {0}次尝试重试".format(i + 1))
+                            print(u"验证码有误, {0}次尝试重试".format(i + 1))
                     print(u"验证码超过限定次数3次，放弃此次订票机会!")
                 g.sendGetQueueCountAsync()
         else:
@@ -120,5 +121,3 @@ class autoSubmitOrderRequest:
                 print("".join(autoSubmitOrderRequestResult.get("messages", "")))
             elif autoSubmitOrderRequestResult.get("validateMessages", ""):
                 print("".join(autoSubmitOrderRequestResult.get("validateMessages", "")))
-
-

@@ -2,6 +2,8 @@
 import json
 import socket
 import re
+from config.urlConf import urls
+
 # s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # s.connect(('183.232.189.31', 80))
 # get_str = 'GET {0} HTTP/1.1\r\nConnection: close\r\n' \
@@ -24,8 +26,6 @@ import re
 #            "appid=otn\r\n"
 # # s.sendall(get_str.format("https://kyfw.12306.cn/otn/resources/login.html"))
 # s.sendall(post_str.format("https://kyfw.12306.cn/passport/web/auth/uamtk"))
-from config.urlConf import urls
-
 
 def default_get_data():
     """

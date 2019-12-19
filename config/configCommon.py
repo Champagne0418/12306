@@ -106,8 +106,8 @@ def getCacheFile(cacheType):
 
 def checkSleepTime(session):
     now = datetime.datetime.now()
-    if now.hour >= maxRunStopTime or now.hour < maxRunTime:
-        print(u"12306休息时间，本程序自动停止,明天早上六点将自动运行")
+    if (now.hour >= maxRunStopHour and now.minute >= maxRunStopMinite) or now.hour < maxRunTime:
+        print(u"12306休息时间（23：30-次日6：00），本程序自动停止,明天早上六点将自动运行")
         open_time = datetime.datetime(now.year, now.month, now.day, maxRunTime)
         if open_time < now:
             open_time += datetime.timedelta(1)

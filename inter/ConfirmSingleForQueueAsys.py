@@ -1,6 +1,4 @@
 # coding=utf-8
-import json
-import urllib
 from collections import OrderedDict
 
 from inter.QueryOrderWaitTime import queryOrderWaitTime
@@ -15,7 +13,7 @@ class confirmSingleForQueueAsys:
                  passengerTicketStr,
                  oldPassengerStr,
                  result,
-                 randCode="",
+                 randCode = "",
                  ):
         self.session = session
         self.passengerTicketStr = passengerTicketStr

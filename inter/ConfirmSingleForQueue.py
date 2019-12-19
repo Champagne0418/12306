@@ -1,5 +1,4 @@
 # coding=utf-8
-import datetime
 import time
 
 from inter.CheckRandCodeAnsyn import checkRandCodeAnsyn
@@ -9,7 +8,8 @@ from inter.QueryOrderWaitTime import queryOrderWaitTime
 
 
 class confirmSingleForQueue:
-    def __init__(self, session, ifShowPassCodeTime, is_node_code, token, set_type, ticket_peoples, ticketInfoForPassengerForm,
+    def __init__(self, session, ifShowPassCodeTime, is_node_code, token, set_type, ticket_peoples,
+                 ticketInfoForPassengerForm,
                  oldPassengerStr, passengerTicketStrList):
         self.session = session
         self.ifShowPassCodeTime = ifShowPassCodeTime
@@ -69,7 +69,7 @@ class confirmSingleForQueue:
                         data['randCode'] = randCode
                         break
                     else:
-                        print (u"验证码有误, {0}次尝试重试".format(i + 1))
+                        print(u"验证码有误, {0}次尝试重试".format(i + 1))
                 print(u"验证码超过限定次数3次，放弃此次订票机会!")
             else:
                 print(u"不需要验证码")
