@@ -58,7 +58,7 @@ IS_AUTO_CODE = True
 AUTO_CODE_TYPE = 2
 
 # 此处设置云打码服务器地址，如果有自建的服务器，可以自行更改
-HOST = "api.readour.org"
+HOST = "120.77.154.140:8000"
 REQ_URL = "/verify/base64/"
 HTTP_TYPE = "http"
 # HOST="12306.yinaoxiong.cn" #备用服务器稳定性较差
@@ -151,4 +151,4 @@ MAX_TIME = 3
 MIN_TIME = 1
 
 # 软件版本
-RE_VERSION = "1.1.117"
+RE_VERSION = "1.2.002"
