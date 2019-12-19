@@ -14,9 +14,9 @@ class query:
     查询接口
     """
 
-    def __init__(self, session, from_station, to_station, from_station_h, to_station_h, _station_seat, station_trains,
+    def __init__(self, selectObj, from_station, to_station, from_station_h, to_station_h, _station_seat, station_trains,
                  ticke_peoples_num, station_dates=None, ):
-        self.session = session
+        self.session = selectObj
         self.httpClint = HTTPClient(TickerConfig.IS_PROXY)
         self.httpClint.set_cookies(self.session.cookies)
         self.urls = urlConf.urls
@@ -63,9 +63,8 @@ class query:
         查询
         :return:
         """
-        if TickerConfig.IS_CDN == 1:
-            if self.session.cdn_list:
-                self.httpClint.cdn = self.session.cdn_list[random.randint(0, len(self.session.cdn_list) - 1)]
+        if TickerConfig.IS_CDN == 1 and self.session.cdn_list:
+            self.httpClint.cdn = self.session.cdn_list[random.randint(0, len(self.session.cdn_list) - 1)]
         for station_date in self.station_dates:
             select_url = copy.copy(self.urls["select_url"])
             select_url["req_url"] = select_url["req_url"].format(station_date, self.from_station, self.to_station,
@@ -152,14 +151,14 @@ class query:
                                                 "cdn": self.httpClint.cdn,
                                                 "status": True,
                                             }
-                                elif is_ticket_pass == '无' and ticket_info[-2] == "1" and TickerConfig.TICKET_TYPE is 2:
+                                elif is_ticket_pass == '无' and ticket_info[37] == "1" and TickerConfig.TICKET_TYPE is 2:
                                     """
                                     is_ticket_pass如果有别的显示，但是可以候补，可以提issues提出来，附上query log，我将添加上
                                     判断车次是否可以候补
                                     目前的候补机制是只要一有候补位置，立马提交候补
                                     """
                                     # 如果最后一位为1，则是可以候补的，不知道这些正确嘛？
-                                    nate = list(ticket_info[-1])
+                                    nate = list(ticket_info[38])
                                     if wrapcache.get(f"hb{ticket_info[2]}"):
                                         continue
                                     for set_type in TickerConfig.SET_TYPE:

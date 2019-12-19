@@ -6,9 +6,11 @@ from collections import OrderedDict
 
 import requests
 
+import TickerConfig
 from agency.agency_tools import proxy
 from config.emailConf import sendEmail
 from config.serverchanConf import sendServerChan
+from inter.LiftTicketInit import liftTicketInit
 
 
 def _set_header_default():
@@ -23,7 +25,6 @@ def _set_header_default():
 
 
 class testAll(unittest.TestCase):
-
     def testProxy(self):
         """
         测试代理是否可用
@@ -97,6 +98,21 @@ class testAll(unittest.TestCase):
                 print(f"响应时间{time.time()-starttime}m")
             except:
                 pass
+
+    def testCdn(self):
+        """
+        测试cdn筛选
+        :return:
+        """
+        cdn = ["60.9.0.19", "60.9.0.20", "113.16.212.251", "36.250.248.27"]
+        from inter.LiftTicketInit import liftTicketInit
+        from init.select_ticket_info import select
+        from config.getCookie import getDrvicesID
+
+        s = select()
+        s.httpClint.cdn = cdn[3]
+        getDrvicesID(s)
+        liftTicketInit(s).reqLiftTicketInit()
 
 
 if __name__ == '__main__':
