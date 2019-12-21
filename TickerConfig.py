@@ -1,3 +1,4 @@
+# -*- coding=utf-8 -*-
 # 关于软件使用配置说明，一定要看！！！
 # ps: 如果是候补车票，需要通过人证一致性核验的用户及激活的“铁路畅行”会员可以提交候补需求，请您按照操作说明在铁路12306app.上完成人证核验
 # 关于候补了之后是否还能继续捡漏的问题在此说明： 软件为全自动候补加捡漏，如果软件候补成功则会停止抢票，发出邮件通知，但是不会影响你继续捡漏，
@@ -14,13 +15,13 @@ STATION_DATES = [
 # 填入需要购买的车次(list)，"G1353"
 # 修改车次填入规则，注：(以前设置的车次逻辑不变)，如果车次填入为空，那么就是当日乘车所有车次都纳入筛选返回
 # 不填车次是整个list为空才算，如果不是为空，依然会判断车次的，这种是错误的写法 [""], 正确的写法 []
-STATION_TRAINS = ['K1020']
+STATION_TRAINS = []
 
 # 出发城市，比如深圳北，就填深圳就搜得到
-FROM_STATION = "深圳东"
+FROM_STATION = "深圳北"
 
 # 到达城市 比如深圳北，就填深圳就搜得到
-TO_STATION = "九江"
+TO_STATION = ""
 
 # 座位(list) 多个座位ex:
 # "商务座",
@@ -32,7 +33,7 @@ TO_STATION = "九江"
 # "硬座",
 # "无座",
 # "动卧",
-SET_TYPE = ['硬卧']
+SET_TYPE = ["二等座"]
 
 # 当余票小于乘车人，如果选择优先提交，则删减联系人和余票数一致在提交
 # bool
@@ -41,7 +42,7 @@ IS_MORE_TICKET = True
 # 乘车人(list) 多个乘车人ex:
 # "张三",
 # "李四"
-TICKET_PEOPLES = ['胡智勇']
+TICKET_PEOPLES = []
 
 # 12306登录账号
 USER = "16675432373"
@@ -112,11 +113,11 @@ ORDER_MODEL = 1
 IS_PROXY = 0
 
 # 预售放票时间, 如果是捡漏模式，可以忽略此操作
-OPEN_TIME = "10:00:00"
+OPEN_TIME = "09:59:57"
 # 1=使用selenium获取devicesID
 # 2=使用网页端/otn/HttpZF/logdevice获取devicesId，这个接口的算法目前可能有点问题，如果登录一直302的请改为配置1
 # 3=自己打开浏览器在headers-Cookies中抓取RAIL_DEVICEID和RAIL_EXPIRATION，这个就不用配置selenium
-COOKIE_TYPE = 1
+COOKIE_TYPE = 3
 # 如果COOKIE_TYPE=1，则需配置chromeDriver路径,下载地址http://chromedriver.storage.googleapis.com/index.html
 # chromedriver配置版本只要和chrome的大版本匹配就行
 CHROME_PATH = r"chromedriver.exe"
@@ -127,6 +128,8 @@ CHROME_CHROME_PATH = "/opt/google/chrome/google-chrome"
 # 如果COOKIE_TYPE=3, 则需配置RAIL_EXPIRATION、RAIL_DEVICEID的值
 RAIL_EXPIRATION = ""
 RAIL_DEVICEID = ""
+# RAIL_EXPIRATION = "1577034103293"
+# RAIL_DEVICEID = "CDno29Erc_Pf3FSXb4dzq-Op64EhWrsi5yUZKVIKR1MAfYo2qFlCeXD8VkexY7_1qg-ClV-fE8j9jgVlPZxRh3wVc2iqLe_5A8sdr62qZx4B22JPF8lFCjpgTKZ5ODW90HJd5tiQsJ1KR9nOqHRxHj1FT5LEIwfw"
 
 
 # 1=>为一直随机ua,2->只启动的时候随机一次ua
@@ -151,4 +154,4 @@ MAX_TIME = 3
 MIN_TIME = 1
 
 # 软件版本
-RE_VERSION = "1.2.002"
+RE_VERSION = "1.2.004"

@@ -38,8 +38,8 @@ class select:
         self.get_ticket_info()
         self._station_seat = [seat_conf[x] for x in TickerConfig.SET_TYPE]
         self.auto_code_type = TickerConfig.AUTO_CODE_TYPE
-        self.httpClint = HTTPClient(TickerConfig.IS_PROXY)
-        self.httpClint.cdn = self.cdn_list[random.randint(0, len(self.cdn_list) - 1)]
+        self.httpClint = HTTPClient(TickerConfig.IS_PROXY, self.cdn_list)
+        self.httpClint.cdn = self.cdn_list[random.randint(0, 4)]
         self.urls = urlConf.urls
         self.login = GoLogin(self, TickerConfig.IS_AUTO_CODE, self.auto_code_type)
         self.cookies = ""
@@ -124,8 +124,8 @@ class select:
         now = datetime.datetime.now()
         if TickerConfig.ORDER_MODEL is 1:
             print(f"预售还未开始，阻塞中，预售时间为{TickerConfig.OPEN_TIME}, 当前时间为: {now.strftime('%H:%M:%S')}")
-            sleep_time_s = 0.5
-            sleep_time_t = 0.6
+            sleep_time_s = 0.1
+            sleep_time_t = 0.3
             # 测试了一下有微妙级的误差，应该不影响，测试结果：2019-01-02 22:30:00.004555，预售还是会受到前一次刷新的时间影响，暂时没想到好的解决方案
             while now.strftime("%H:%M:%S") < TickerConfig.OPEN_TIME:
                 now = datetime.datetime.now()
@@ -152,7 +152,7 @@ class select:
                           )
                 queryResult = q.sendQuery()
                 # 查询接口
-                if queryResult.get("status", False):
+                if queryResult.get("status"):
                     train_no = queryResult.get("train_no", "")
                     train_date = queryResult.get("train_date", "")
                     stationTrainCode = queryResult.get("stationTrainCode", "")
