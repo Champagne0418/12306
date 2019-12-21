@@ -8,7 +8,7 @@ TICKET_TYPE = 2
 
 # 出发日期(list) "2018-01-06", "2018-01-07"
 STATION_DATES = [
-    "2020-01-17"
+    "2020-01-18"
 ]
 
 # 填入需要购买的车次(list)，"G1353"
@@ -79,12 +79,12 @@ HTTP_TYPE = "http"
 #  password: "授权码"
 #  host: "smtp.qq.com"
 EMAIL_CONF = {
-    "IS_MAIL": True,
-    "email": "19s151088@stu.hit.edu.cn",
-    "notice_email_list": "776738335@qq.com",
-    "username": "19s151088@stu.hit.edu.cn",
-    "password": "Guanxb1213",
-    "host": "smtp.hit.edu.cn",
+    "IS_MAIL": False,
+    "email": "",
+    "notice_email_list": "",
+    "username": "",
+    "password": "",
+    "host": "",
 }
 
 # 是否开启 server酱 微信提醒， 使用前需要前往 http://sc.ftqq.com/3.version 扫码绑定获取 SECRET 并关注获得抢票结果通知的公众号

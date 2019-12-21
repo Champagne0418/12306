@@ -135,7 +135,7 @@ class select:
             sleep_time_s = TickerConfig.MIN_TIME
             sleep_time_t = TickerConfig.MAX_TIME
 
-        while 1:
+        while True:
             try:
                 num += 1
                 now = datetime.datetime.now()  # 感谢群里大佬提供整点代码

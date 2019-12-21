@@ -17,7 +17,7 @@ class checkUser:
         :return:
         """
         CHENK_TIME = 1
-        while 1:
+        while True:
             time.sleep(3)  # 防止cpu占用过高
             configCommon.checkSleepTime(self.session)  # 修复晚上查询线程休眠时，检查登录线程为休眠，造成快豆迅速消耗
             if wrapcache.get("user_time") is None:
