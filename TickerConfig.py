@@ -9,7 +9,7 @@ TICKET_TYPE = 2
 
 # 出发日期(list) "2018-01-06", "2018-01-07"
 STATION_DATES = [
-    "2020-01-18"
+    ""
 ]
 
 # 填入需要购买的车次(list)，"G1353"
@@ -45,8 +45,8 @@ IS_MORE_TICKET = True
 TICKET_PEOPLES = []
 
 # 12306登录账号
-USER = "16675432373"
-PWD = "Guanxb1213"
+USER = ""
+PWD = ""
 
 # 加入小黑屋时间默认为5分钟，此功能为了防止僵尸票导致一直下单不成功错过正常的票
 TICKET_BLACK_LIST_TIME = 5
